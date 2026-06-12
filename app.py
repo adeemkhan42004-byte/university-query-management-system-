@@ -28,7 +28,7 @@ def load_rag():
         "academic_info.csv", "exams.csv", "faculty.csv", "fees.csv",
         "admissions.csv", "scholarships.csv", "library.csv", "clubs.csv",
         "transport.csv", "placements.csv", "grievance.csv", "health.csv",
-        "rules.csv", "labs.csv", "contacts.csv"
+        "rules.csv", "labs.csv", "contacts.csv" , "subjects.csv"
     ]
 
     documents = []
@@ -55,7 +55,7 @@ def load_rag():
 
 client, embedding_model, index, documents, sources = load_rag()
 
-def query_rag(question, n_results=5):
+def query_rag(question, n_results=15):
     question_embedding = embedding_model.encode([question])
     question_embedding = np.array(question_embedding).astype("float32")
     distances, indices = index.search(question_embedding, n_results)
